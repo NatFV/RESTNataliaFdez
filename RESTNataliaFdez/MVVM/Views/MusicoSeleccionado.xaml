@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RESTNataliaFdez.MVVM.Views.MusicoSeleccionado"
+             xmlns:local ="clr-namespace:RESTNataliaFdez.MVVM.Models"
+            xmlns:vm ="clr-namespace:RESTNataliaFdez.MVVM.ViewModels"
+            Title="MusicoSeleccionado">
+    <ContentPage.BindingContext>
+        <vm:DataViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        
+        <!--Definimos las filas y las columnas-->
+        <Grid Padding="10"  ColumnDefinitions ="*,*,*,*" RowDefinitions="*,*,*,*">
+            <!--Definimos el frame que rodea a los campos con la información-->
+            <Frame Grid.RowSpan="3" 
+                   Grid.ColumnSpan="4" 
+                   CornerRadius="10" 
+                   HasShadow="True" 
+                   Padding="30" 
+                   BackgroundColor="#FFF4FFFF" 
+                   BorderColor="DarkCyan">
+            </Frame>
+
+            <!--Título-->
+            <HorizontalStackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10">
+                <Label Text="Nombre:"
+                     TextColor="DarkCyan"
+                     VerticalOptions="Start" 
+                     HorizontalOptions="Start" 
+                     FontSize="Body" Margin="10"/>
+                <Entry 
+                     x:Name="NameEntry"
+                      Placeholder="Introduce un nombre"                     
+                      Text="{Binding Name}"
+                      VerticalOptions="Start"
+                      Keyboard="Default"
+                      TextChanged="NombreEntry_TextChanged"
+                      Completed="NombreEntry_Completed"/>
+            </HorizontalStackLayout>
+            
+            <!--Ciudad-->
+            <HorizontalStackLayout Grid.Row="1" Grid.Column="0">
+                <Label Text="Ciudad:" 
+                     VerticalOptions="Start" 
+                     HorizontalOptions="Start"
+                     TextColor="DarkCyan"
+                     FontSize="Body" Margin="10"/>
+                <Entry 
+                     x:Name="LocationEntry"
+                     Placeholder="Introduce una ciudad" 
+                     Text="{Binding Location}"
+                     VerticalOptions="Start"
+                     Keyboard="Default"
+                     TextChanged="NombreEntry_TextChanged"
+                     Completed="NombreEntry_Completed"/>
+            </HorizontalStackLayout>
+            
+            <!--Género musical-->
+            <HorizontalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                <Label Text="Género musical:" 
+                     TextColor="DarkCyan"
+                     VerticalOptions="Start" 
+                     HorizontalOptions="Start" 
+                     FontSize="Body" Margin="10"/>
+                <Entry 
+                     x:Name="GenreEntry"
+                     Placeholder="Introduce un género musical" 
+                     Text="{Binding MusicGenre}"
+                     VerticalOptions="Start"
+                     Keyboard="Default"
+                     TextChanged="NombreEntry_TextChanged"
+                     Completed="NombreEntry_Completed"/>
+            </HorizontalStackLayout>
+            
+            <!--Nombre de la canción-->
+            <HorizontalStackLayout Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,10" HorizontalOptions="Start">
+                <Label Text="Nombre de la canción:" 
+                     TextColor="DarkCyan"
+                     VerticalOptions="Start" 
+                     HorizontalOptions="Start" 
+                     FontSize="Body" Margin="10"/>
+                <Entry 
+                     x:Name="SongNameEntry"
+                     Placeholder="Introduce el nombre de la canción" 
+                     Text="{Binding SongName}"
+                     VerticalOptions="Start"
+                     Keyboard="Default"
+                     TextChanged="NombreEntry_TextChanged"
+                     Completed="NombreEntry_Completed"/>
+            </HorizontalStackLayout>
+            
+            <!--Id-->
+            <HorizontalStackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
+                <Label Text="Número en la lista (id):" 
+                     TextColor="DarkCyan"
+                     VerticalOptions="Start" 
+                     HorizontalOptions="Start" 
+                     FontSize="Body" Margin="10"/>
+                <Entry 
+                     x:Name="IdEntry"
+                     Placeholder="Introduce un número para la lista" 
+                     Text="{Binding Id}"
+                     VerticalOptions="Start"
+                     Keyboard="Default"
+                     TextChanged="NombreEntry_TextChanged"
+                     Completed="NombreEntry_Completed"/>
+            </HorizontalStackLayout>
+
+            <!--Botones de guardar o anular-->
+            
+
+            <Button Text="Actualizar músico" 
+             Command="{Binding UpdateMusicianCommand}"
+                    BackgroundColor="DarkCyan"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+
+            <Button Text="Eliminar músico" 
+             Command="{Binding DeleteMusicianCommand}"
+                    BackgroundColor="DarkCyan"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+
+            <Button Text="Cancelar" 
+                    Clicked="Button_Clicked"
+                    BackgroundColor="DarkCyan"
+                    Grid.Column="2"
+                    Grid.Row="4"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

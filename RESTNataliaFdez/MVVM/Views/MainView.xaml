@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RESTNataliaFdez.MVVM.Views.MainView"
+             Title="Los mejores músicos del mundo" 
+             BackgroundColor="AliceBlue">
+    <ScrollView>
+    <VerticalStackLayout>
+        <!--Título e imagen de la página principal-->
+        <Label Text="Bienvenido a la lista de los mejores músicos del mundo" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Margin="0,20,0,0"/>
+        <Image Source="musicos2.png" WidthRequest="400" Margin="0,20,0,0" HorizontalOptions="Center"/>
+        
+        <!--Botones-->
+        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="100" Margin="30">
+            <Button Text="Añadir nuevo músico" Clicked="Button_Clicked" BackgroundColor="DarkMagenta"/>
+            <Button Text="Buscar músico" Command="{Binding GetMusicianCommand}" BackgroundColor="DarkCyan"/>
+            <Button Text="Ver lista completa" Command="{Binding GetAllMusiciansCommand}"/>
+        </HorizontalStackLayout>
+
+        <!--Buscar número en la lista-->
+        <StackLayout HorizontalOptions="Center">
+            <Label Text="Introduce el número en la lista:" 
+                TextColor="DarkCyan"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                FontSize="Body" Margin="10"/>
+            <Entry 
+                x:Name="SelectedIdEntry"
+                Placeholder="Número en la lista" 
+                Text="{Binding IdToSearch}"
+                PlaceholderColor="LightBlue"
+                VerticalOptions="Start"
+                Keyboard="Default"
+                TextChanged="SelectedIdEntry_TextChanged"
+                Completed="SelectedIdEntry_Completed"/>
+            
+            <!--Mensaje de error, sólo si no se introduce el número correcto-->
+            <Label Text="{Binding ErrorMessage}" 
+                    TextColor="Red"
+                    FontSize="16"
+                    IsVisible="{Binding ErrorMessage, Mode=OneWay}" 
+                    Margin="10"/>
+        </StackLayout>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

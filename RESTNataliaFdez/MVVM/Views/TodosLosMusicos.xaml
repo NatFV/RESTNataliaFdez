@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RESTNataliaFdez.MVVM.Views.TodosLosMusicos"
+             xmlns:local ="clr-namespace:RESTNataliaFdez.MVVM.Models"
+             xmlns:vm ="clr-namespace:RESTNataliaFdez.MVVM.ViewModels"
+             BackgroundColor="AliceBlue"
+             Title="TodosLosMusicos">
+
+ <!-- BindingContext asignado al ViewModel -->
+    <ContentPage.BindingContext>
+        <vm:DataViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <CollectionView ItemsSource="{Binding Musicians}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="15, 15, 15, 0" ColumnDefinitions="*, *" RowDefinitions="*, *, *" BackgroundColor="Transparent" Padding="10">
+                        <!--Definimos el frame que rodea a los campos con la información-->
+                        <Frame Grid.RowSpan="5" 
+                               Grid.ColumnSpan="2" 
+                               CornerRadius="10" 
+                               HasShadow="True" 
+                               Padding="10" 
+                               BackgroundColor="Lavender" 
+                               BorderColor="DarkMagenta"> 
+                        </Frame>
+                        
+                        <!-- Información -->
+                        <Label Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding Id, StringFormat='Ranking: {0}'}" FontSize="Small" TextColor="BlueViolet" FontAttributes="Bold"/>
+                        <Label Grid.Row="1" Grid.Column="0" Margin="5" Text="{Binding Name}" FontSize="Small" TextColor="DarkCyan" FontAttributes="Bold"/>
+                        <Label Grid.Row="2" Grid.Column="0" Margin="5" Text="{Binding Location, StringFormat= 'Lugar de origen: {0}'}" FontSize="Small" TextColor="DarkCyan" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding MusicGenre, StringFormat='Género musical: {0}'}" FontSize="Small" TextColor="DarkCyan" FontAttributes="Bold"/>
+                        <Label Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding SongName, StringFormat='Nombre de la canción: {0}'}" FontSize="Small" TextColor="DarkCyan" FontAttributes="Bold" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>
